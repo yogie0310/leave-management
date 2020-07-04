@@ -51,10 +51,16 @@ namespace leave_management.Repository
             return changes > 0;
         }
 
-        bool IRepositoryBase<LeaveType>.Update(LeaveType entity)
+        bool IRepositoryBase<LeaveType>.Update(LeaveType entity) 
         {
             _db.LeaveTypes.Update(entity);
             return Save();
+        }   
+
+        public bool isExists(int Id)
+        {
+            var isExists = _db.LeaveTypes.Any(q => q.Id == Id);
+            return isExists;
         }
     }
 }

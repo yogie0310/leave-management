@@ -50,5 +50,11 @@ namespace leave_management.Repository
             _db.LeaveHistories.Update(entity);
             return Save();
         }
+
+        public bool isExists(int Id)
+        {
+            var isExists = _db.LeaveHistories.Any(q => q.Id == Id);
+            return isExists;
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace leave_management.Repository
         public LeaveAllocationRepository(ApplicationDbContext db)
         {
             _db = db;
-        }
+        } 
         bool IRepositoryBase<LeaveAllocation>.Create(LeaveAllocation entity)
         {
             _db.LeaveAllocations.Add(entity);
@@ -53,6 +53,12 @@ namespace leave_management.Repository
 
             _db.LeaveAllocations.Update(entity);
             return Save();
+        }
+
+        public bool isExists(int Id)
+        {
+            var isExists = _db.LeaveAllocations.Any(q => q.Id == Id);
+            return isExists;
         }
     }
 }
